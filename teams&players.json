@@ -1,0 +1,222 @@
+[
+  {
+      "id": 1,
+      "teamName": "Astralis",
+      "description": "Een top-tier Deens CS:GO team bekend om hun strategische gameplay.",
+      "ranking": 3,
+      "active": true,
+      "formationDate": "2016-01-18",
+      "teamLogoUrl": "https://example.com/astralis-logo.jpg",
+      "region": "Europe",
+      "players": [
+          {
+              "id": 1,
+              "name": "device",
+              "age": 27,
+              "active": true,
+              "birthDate": "1995-09-08",
+              "profileImageUrl": "https://example.com/device.jpg",
+              "role": "AWPer",
+              "hobbies": ["Gaming", "Reading"],
+              "stats": {
+                  "id": 101,
+                  "matchesPlayed": 500,
+                  "roundsWon": 3200,
+                  "headshots": 6500
+              }
+          },
+          {
+              "id": 2,
+              "name": "gla1ve",
+              "age": 26,
+              "active": true,
+              "birthDate": "1996-06-07",
+              "profileImageUrl": "https://example.com/gla1ve.jpg",
+              "role": "In-game Leader",
+              "hobbies": ["Chess", "Training"],
+              "stats": {
+                  "id": 102,
+                  "matchesPlayed": 480,
+                  "roundsWon": 3100,
+                  "headshots": 6000
+              }
+          }
+      ]
+  },
+  {
+      "id": 2,
+      "teamName": "Natus Vincere",
+      "description": "Oekraïens powerhouse team dat altijd meedingt naar de topplaatsen.",
+      "ranking": 1,
+      "active": true,
+      "formationDate": "2009-12-17",
+      "teamLogoUrl": "https://example.com/navi-logo.jpg",
+      "region": "CIS",
+      "players": [
+          {
+              "id": 3,
+              "name": "s1mple",
+              "age": 25,
+              "active": true,
+              "birthDate": "1997-10-02",
+              "profileImageUrl": "https://example.com/s1mple.jpg",
+              "role": "AWPer",
+              "hobbies": ["Gaming", "Streaming"],
+              "stats": {
+                  "id": 103,
+                  "matchesPlayed": 600,
+                  "roundsWon": 4000,
+                  "headshots": 8000
+              }
+          },
+          {
+              "id": 4,
+              "name": "electronic",
+              "age": 24,
+              "active": true,
+              "birthDate": "1998-09-02",
+              "profileImageUrl": "https://example.com/electronic.jpg",
+              "role": "Rifler",
+              "hobbies": ["Football", "Cooking"],
+              "stats": {
+                  "id": 104,
+                  "matchesPlayed": 550,
+                  "roundsWon": 3500,
+                  "headshots": 7000
+              }
+          }
+      ]
+  },
+  {
+      "id": 3,
+      "teamName": "G2 Esports",
+      "description": "Internationaal team bekend om hun dynamische en onvoorspelbare speelstijl.",
+      "ranking": 4,
+      "active": true,
+      "formationDate": "2015-02-24",
+      "teamLogoUrl": "https://example.com/g2-logo.jpg",
+      "region": "Europe",
+      "players": [
+          {
+              "id": 5,
+              "name": "NiKo",
+              "age": 26,
+              "active": true,
+              "birthDate": "1997-02-16",
+              "profileImageUrl": "https://example.com/niko.jpg",
+              "role": "Rifler",
+              "hobbies": ["Gaming", "Hiking"],
+              "stats": {
+                  "id": 105,
+                  "matchesPlayed": 550,
+                  "roundsWon": 3400,
+                  "headshots": 7200
+              }
+          },
+          {
+              "id": 6,
+              "name": "huNter-",
+              "age": 25,
+              "active": true,
+              "birthDate": "1998-01-01",
+              "profileImageUrl": "https://example.com/hunter.jpg",
+              "role": "Support",
+              "hobbies": ["Cooking", "Football"],
+              "stats": {
+                  "id": 106,
+                  "matchesPlayed": 530,
+                  "roundsWon": 3300,
+                  "headshots": 6800
+              }
+          }
+      ]
+  },
+  {
+      "id": 4,
+      "teamName": "Team Liquid",
+      "description": "Amerikaans team met een sterke aanwezigheid in zowel CS:GO als andere esports.",
+      "ranking": 5,
+      "active": true,
+      "formationDate": "2000-05-10",
+      "teamLogoUrl": "https://example.com/liquid-logo.jpg",
+      "region": "North America",
+      "players": [
+          {
+              "id": 7,
+              "name": "EliGE",
+              "age": 24,
+              "active": true,
+              "birthDate": "1998-07-16",
+              "profileImageUrl": "https://example.com/elige.jpg",
+              "role": "Rifler",
+              "hobbies": ["Gaming", "Reading"],
+              "stats": {
+                  "id": 107,
+                  "matchesPlayed": 560,
+                  "roundsWon": 3500,
+                  "headshots": 7400
+              }
+          },
+          {
+              "id": 8,
+              "name": "NAF",
+              "age": 25,
+              "active": true,
+              "birthDate": "1997-11-24",
+              "profileImageUrl": "https://example.com/naf.jpg",
+              "role": "Support",
+              "hobbies": ["Cooking", "Traveling"],
+              "stats": {
+                  "id": 108,
+                  "matchesPlayed": 540,
+                  "roundsWon": 3400,
+                  "headshots": 7200
+              }
+          }
+      ]
+  },
+  {
+      "id": 5,
+      "teamName": "FaZe Clan",
+      "description": "Internationaal team met een diverse selectie van getalenteerde spelers.",
+      "ranking": 2,
+      "active": true,
+      "formationDate": "2010-05-30",
+      "teamLogoUrl": "https://example.com/faze-logo.jpg",
+      "region": "Europe",
+      "players": [
+          {
+              "id": 9,
+              "name": "rain",
+              "age": 27,
+              "active": true,
+              "birthDate": "1995-08-27",
+              "profileImageUrl": "https://example.com/rain.jpg",
+              "role": "Entry Fragger",
+              "hobbies": ["Fishing", "Gaming"],
+              "stats": {
+                  "id": 109,
+                  "matchesPlayed": 570,
+                  "roundsWon": 3600,
+                  "headshots": 7500
+              }
+          },
+          {
+              "id": 10,
+              "name": "broky",
+              "age": 24,
+              "active": true,
+              "birthDate": "1998-02-14",
+              "profileImageUrl": "https://example.com/broky.jpg",
+              "role": "AWPer",
+              "hobbies": ["Traveling", "Reading"],
+              "stats": {
+                  "id": 110,
+                  "matchesPlayed": 550,
+                  "roundsWon": 3500,
+                  "headshots": 7300
+              }
+          }
+      ]
+  }
+]

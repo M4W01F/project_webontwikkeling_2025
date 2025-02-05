@@ -1,0 +1,112 @@
+[
+  {
+      "id": 101,
+      "matchesPlayed": 500,
+      "roundsWon": 3200,
+      "headshots": 6500,
+      "additionalStats": {
+          "kills": 12500,
+          "deaths": 9000,
+          "rating": 1.2
+      }
+  },
+  {
+      "id": 102,
+      "matchesPlayed": 480,
+      "roundsWon": 3100,
+      "headshots": 6000,
+      "additionalStats": {
+          "kills": 10500,
+          "deaths": 9500,
+          "rating": 1.1
+      }
+  },
+  {
+      "id": 103,
+      "matchesPlayed": 600,
+      "roundsWon": 4000,
+      "headshots": 8000,
+      "additionalStats": {
+          "kills": 14000,
+          "deaths": 8000,
+          "rating": 1.3
+      }
+  },
+  {
+      "id": 104,
+      "matchesPlayed": 550,
+      "roundsWon": 3500,
+      "headshots": 7000,
+      "additionalStats": {
+          "kills": 11000,
+          "deaths": 8700,
+          "rating": 1.2
+      }
+  },
+  {
+      "id": 105,
+      "matchesPlayed": 550,
+      "roundsWon": 3400,
+      "headshots": 7200,
+      "additionalStats": {
+          "kills": 11500,
+          "deaths": 8600,
+          "rating": 1.25
+      }
+  },
+  {
+      "id": 106,
+      "matchesPlayed": 530,
+      "roundsWon": 3300,
+      "headshots": 6800,
+      "additionalStats": {
+          "kills": 10800,
+          "deaths": 8900,
+          "rating": 1.15
+      }
+  },
+  {
+      "id": 107,
+      "matchesPlayed": 560,
+      "roundsWon": 3500,
+      "headshots": 7400,
+      "additionalStats": {
+          "kills": 12000,
+          "deaths": 8000,
+          "rating": 1.3
+      }
+  },
+  {
+      "id": 108,
+      "matchesPlayed": 540,
+      "roundsWon": 3400,
+      "headshots": 7200,
+      "additionalStats": {
+          "kills": 11200,
+          "deaths": 8500,
+          "rating": 1.2
+      }
+  },
+  {
+      "id": 109,
+      "matchesPlayed": 570,
+      "roundsWon": 3600,
+      "headshots": 7500,
+      "additionalStats": {
+          "kills": 11800,
+          "deaths": 8200,
+          "rating": 1.28
+      }
+  },
+  {
+      "id": 110,
+      "matchesPlayed": 550,
+      "roundsWon": 3500,
+      "headshots": 7300,
+      "additionalStats": {
+          "kills": 11300,
+          "deaths": 8400,
+          "rating": 1.22
+      }
+  }
+]
