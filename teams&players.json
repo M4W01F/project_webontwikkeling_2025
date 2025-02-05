@@ -15,7 +15,7 @@
               "age": 27,
               "active": true,
               "birthDate": "1995-09-08",
-              "profileImageUrl": "https://example.com/device.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/device.png",
               "role": "AWPer",
               "hobbies": ["Gaming", "Reading"],
               "stats": {
@@ -31,7 +31,7 @@
               "age": 26,
               "active": true,
               "birthDate": "1996-06-07",
-              "profileImageUrl": "https://example.com/gla1ve.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/gla1ve.jpg",
               "role": "In-game Leader",
               "hobbies": ["Chess", "Training"],
               "stats": {
@@ -50,7 +50,7 @@
       "ranking": 1,
       "active": true,
       "formationDate": "2009-12-17",
-      "teamLogoUrl": "https://example.com/navi-logo.jpg",
+      "teamLogoUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/navi.png",
       "region": "CIS",
       "players": [
           {
@@ -59,7 +59,7 @@
               "age": 25,
               "active": true,
               "birthDate": "1997-10-02",
-              "profileImageUrl": "https://example.com/s1mple.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/s1mple.jpg",
               "role": "AWPer",
               "hobbies": ["Gaming", "Streaming"],
               "stats": {
@@ -75,7 +75,7 @@
               "age": 24,
               "active": true,
               "birthDate": "1998-09-02",
-              "profileImageUrl": "https://example.com/electronic.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/electronic.png",
               "role": "Rifler",
               "hobbies": ["Football", "Cooking"],
               "stats": {
@@ -94,7 +94,7 @@
       "ranking": 4,
       "active": true,
       "formationDate": "2015-02-24",
-      "teamLogoUrl": "https://example.com/g2-logo.jpg",
+      "teamLogoUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/g2.png",
       "region": "Europe",
       "players": [
           {
@@ -103,7 +103,7 @@
               "age": 26,
               "active": true,
               "birthDate": "1997-02-16",
-              "profileImageUrl": "https://example.com/niko.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/niko.png",
               "role": "Rifler",
               "hobbies": ["Gaming", "Hiking"],
               "stats": {
@@ -119,7 +119,7 @@
               "age": 25,
               "active": true,
               "birthDate": "1998-01-01",
-              "profileImageUrl": "https://example.com/hunter.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/hunter.webp",
               "role": "Support",
               "hobbies": ["Cooking", "Football"],
               "stats": {
@@ -138,7 +138,7 @@
       "ranking": 5,
       "active": true,
       "formationDate": "2000-05-10",
-      "teamLogoUrl": "https://example.com/liquid-logo.jpg",
+      "teamLogoUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/liquid.png",
       "region": "North America",
       "players": [
           {
@@ -147,7 +147,7 @@
               "age": 24,
               "active": true,
               "birthDate": "1998-07-16",
-              "profileImageUrl": "https://example.com/elige.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/elige.png",
               "role": "Rifler",
               "hobbies": ["Gaming", "Reading"],
               "stats": {
@@ -163,7 +163,7 @@
               "age": 25,
               "active": true,
               "birthDate": "1997-11-24",
-              "profileImageUrl": "https://example.com/naf.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/naf.webp",
               "role": "Support",
               "hobbies": ["Cooking", "Traveling"],
               "stats": {
@@ -182,7 +182,7 @@
       "ranking": 2,
       "active": true,
       "formationDate": "2010-05-30",
-      "teamLogoUrl": "https://example.com/faze-logo.jpg",
+      "teamLogoUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/faze.png",
       "region": "Europe",
       "players": [
           {
@@ -191,7 +191,7 @@
               "age": 27,
               "active": true,
               "birthDate": "1995-08-27",
-              "profileImageUrl": "https://example.com/rain.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/rain.webp",
               "role": "Entry Fragger",
               "hobbies": ["Fishing", "Gaming"],
               "stats": {
@@ -207,7 +207,7 @@
               "age": 24,
               "active": true,
               "birthDate": "1998-02-14",
-              "profileImageUrl": "https://example.com/broky.jpg",
+              "profileImageUrl": "https://github.com/M4W01F/project_webontwikkeling_2025/blob/main/images/broky.png",
               "role": "AWPer",
               "hobbies": ["Traveling", "Reading"],
               "stats": {
