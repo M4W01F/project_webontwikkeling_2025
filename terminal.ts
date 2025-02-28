@@ -2,6 +2,7 @@ import * as readline from 'readline-sync';
 import teamsPlayers from './teams&players.json';
 import playerStats from './playerStats.json';
 
+
 const option: number = readline.questionInt("Welcome to the JSON data viewer!\n\n1. View all data\n2. Filter by ID\n3. Exit\n\nPlease enter your choice: ");
 
 switch (option) {
@@ -14,7 +15,7 @@ switch (option) {
         const choice: number = readline.questionInt("Please enter the ID you want to filter by: ");
         const filteredTeamsPlayers = teamsPlayers.filter((item: any) => item.id === choice);
         const filteredPlayerStats = playerStats.filter((item: any) => item.id === choice);
-        console.log("Filtered Data by ID:");
+        console.log(`Filtered Data by ID: ${choice}`);
         console.log(JSON.stringify(filteredTeamsPlayers, null, 2));
         console.log(JSON.stringify(filteredPlayerStats, null, 2));
         break;
