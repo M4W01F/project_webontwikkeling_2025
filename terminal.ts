@@ -18,16 +18,13 @@ function mainMenu(): void {
                 filterByID();
                 break;
             case 3:
-                searchByName();
-                break;
-            case 4:
                 console.log("Exiting...");
-                exit = true; // Set exit flag to true
+                exit = true;
                 break;
             default:
                 console.log("Invalid option. Please enter a valid choice.");
         }
-    } while (!exit); // Loop until the user chooses to exit
+    } while (!exit);
 }
 
 function viewAllData(): void {
@@ -46,25 +43,6 @@ function filterByID(): void {
         console.log(`No data found for ID: ${choice}`);
     } else {
         console.log(`Filtered Data by ID: ${choice}`);
-        console.table(filteredTeamsPlayers);
-        console.table(filteredPlayerStats);
-    }
-}
-
-function searchByName(): void {
-    const name: string = readline.question("Please enter the name you want to search for: ");
-
-    const filteredTeamsPlayers = teamsPlayers.filter((item: any) =>
-        item.name.toLowerCase().includes(name.toLowerCase())
-    );
-    const filteredPlayerStats = playerStats.filter((item: any) =>
-        item.name.toLowerCase().includes(name.toLowerCase())
-    );
-
-    if (filteredTeamsPlayers.length === 0 && filteredPlayerStats.length === 0) {
-        console.log(`No data found for name: ${name}`);
-    } else {
-        console.log(`Filtered Data by Name: ${name}`);
         console.table(filteredTeamsPlayers);
         console.table(filteredPlayerStats);
     }
