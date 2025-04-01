@@ -3,11 +3,11 @@ import teamsPlayers from './teams&players.json';
 import playerStats from './playerStats.json';
 
 function mainMenu(): void {
-    let exit = false; // Flag to control the loop
+    let exit = false;
 
     do {
         const option: number = readline.questionInt(
-            "Welcome to the JSON Data Viewer!\n\n1. View all data\n2. Filter by ID\n3. Search by Name\n4. Exit\n\nPlease enter your choice: "
+            "Welcome to the JSON Data Viewer!\n\n1. View all teams and players\n2. Filter team by ID\n3. Filter player by ID\n4. Exit\n\nPlease enter your choice: "
         );
 
         switch (option) {
@@ -15,36 +15,96 @@ function mainMenu(): void {
                 viewAllData();
                 break;
             case 2:
-                filterByID();
+                filterByTeamID();
                 break;
             case 3:
+                filterByPlayerID();
+                break;
+            case 4:
                 console.log("Exiting...");
                 exit = true;
                 break;
             default:
-                console.log("Invalid option. Please enter a valid choice.");
+                console.log("Invalid option. Please try again.");
         }
     } while (!exit);
 }
 
 function viewAllData(): void {
-    console.log("All Data:");
-    console.table(teamsPlayers);
-    console.table(playerStats);
+    console.log("All Teams and Players Data:");
+    console.table(teamsPlayers.map(team => ({
+        id: team.id,
+        teamName: team.teamName,
+        region: team.region,
+        ranking: team.ranking,
+        playersCount: team.players.length
+    })));
 }
 
-function filterByID(): void {
-    const choice: number = readline.questionInt("Please enter the ID you want to filter by: ");
+function filterByTeamID(): void {
+    const teamID: number = readline.questionInt("Enter the Team ID: ");
+    const team = teamsPlayers.find(team => team.id === teamID);
 
-    const filteredTeamsPlayers = teamsPlayers.filter((item: any) => item.id === choice);
-    const filteredPlayerStats = playerStats.filter((item: any) => item.id === choice);
+    if (!team) {
+        console.log(`No team found with ID: ${teamID}`);
+        return;
+    }
 
-    if (filteredTeamsPlayers.length === 0 && filteredPlayerStats.length === 0) {
-        console.log(`No data found for ID: ${choice}`);
+    console.log(`Team: ${team.teamName}`);
+    console.table(team.players.map(player => ({
+        id: player.id,
+        name: player.name,
+        role: player.role,
+        active: player.active,
+    })));
+}
+
+function filterByPlayerID(): void {
+    const playerID: number = readline.questionInt("Enter the Player ID: ");
+    let foundPlayer: any = null;
+    let teamName: string = "";
+
+
+    for (const team of teamsPlayers) {
+        const player = team.players.find(p => p.id === playerID);
+        if (player) {
+            foundPlayer = player;
+            teamName = team.teamName;
+            break;
+        }
+    }
+
+    if (!foundPlayer) {
+        console.log(`No player found with ID: ${playerID}`);
+        return;
+    }
+
+    const stats = playerStats.find(stat => stat.id === foundPlayer.stats.id);
+
+    console.log(`Player: ${foundPlayer.name}`);
+    console.log(`Team: ${teamName}`);
+    console.log("Player Details:");
+    console.table({
+        id: foundPlayer.id,
+        name: foundPlayer.name,
+        role: foundPlayer.role,
+        age: foundPlayer.age,
+        active: foundPlayer.active,
+        birthDate: foundPlayer.birthDate,
+    });
+
+    if (stats) {
+        console.log("Player Stats:");
+        console.table({
+            matchesPlayed: stats.matchesPlayed,
+            roundsWon: stats.roundsWon,
+            headshots: stats.headshots,
+            kills: stats.additionalStats.kills,
+            deaths: stats.additionalStats.deaths,
+            rating: stats.additionalStats.rating,
+        });
     } else {
-        console.log(`Filtered Data by ID: ${choice}`);
-        console.table(filteredTeamsPlayers);
-        console.table(filteredPlayerStats);
+        console.log("No stats available for this player.");
     }
 }
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Details</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <h1>Team Details</h1>
+    <div>
+        <p><strong>Team Name:</strong> <%= team.teamName %></p>
+        <p><strong>Region:</strong> <%= team.region %></p>
+        <p><strong>Ranking:</strong> <%= team.ranking %></p>
+        <img src="<%= team.teamLogoUrl %>" alt="<%= team.teamName %> Logo" style="width:200px;">
+    </div>
+
+    <h2>Players</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Active</th>
+                <th>Profile Picture</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% team.players.forEach(player => { %>
+                <tr>
+                    <td><%= player.stats.id %></td> <!-- Display de stats van de ID -->
+                    <td><%= player.name %></td>
+                    <td><%= player.role %></td>
+                    <td><%= player.active ? "Yes" : "No" %></td>
+                    <td>
+                        <img src="<%= player.profileImageUrl %>" alt="<%= player.name %> Profile Picture" style="width:100px;">
+                    </td>
+                    <td>
+                        <a href="/players/<%= player.stats.id %>">View Details</a> <!-- Toont de volledige info van de speler -->
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

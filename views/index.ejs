@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview - Teams</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <h1>Teams Overview</h1>
+    <input id="filterInput" type="text" placeholder="Filter by Team Name" oninput="filterTeams()">
+    <table id="teamsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Team Name</th>
+                <th>Region</th>
+                <th>Ranking</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% teams.forEach(team => { %>
+                <tr>
+                    <td><%= team.id %></td>
+                    <td><%= team.teamName %></td>
+                    <td><%= team.region %></td>
+                    <td><%= team.ranking %></td>
+                    <td>
+                        <a href="/teams/<%= team.id %>">View Details</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <script>
+        function filterTeams() {
+            const input = document.getElementById('filterInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#teamsTable tbody tr');
+            rows.forEach(row => {
+                const name = row.children[1].textContent.toLowerCase();
+                row.style.display = name.includes(input) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
