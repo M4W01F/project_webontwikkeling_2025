@@ -8,17 +8,21 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "mongodb": "^6.16.0",
+    "path": "^0.12.7",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/readline-sync": "^1.4.8"
-  }
+  },
+  "description": ""
 }

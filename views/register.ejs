@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Registratie</title>
+</head>
+<body>
+    <h2>Registreren</h2>
+    <% if (error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/register" method="POST">
+        <label>Gebruikersnaam:</label>
+        <input type="text" name="username" required>
+        <label>Wachtwoord:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Registreren</button>
+    </form>
+    <p>Heb je al een account? <a href="/login">Login hier</a></p>
+</body>
+</html>
