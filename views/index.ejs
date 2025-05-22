@@ -9,9 +9,13 @@
 <body>
     <nav>
         <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
     </nav>
+
     <h1>Teams Overview</h1>
     <input id="filterInput" type="text" placeholder="Filter by Team Name" oninput="filterTeams()">
+
     <table id="teamsTable">
         <thead>
             <tr>
@@ -36,6 +40,7 @@
             <% }) %>
         </tbody>
     </table>
+
     <script>
         function filterTeams() {
             const input = document.getElementById('filterInput').value.toLowerCase();
