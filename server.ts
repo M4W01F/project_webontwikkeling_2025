@@ -73,59 +73,66 @@ async function startServer() {
 
     app.post("/register", async (req: Request, res: Response) => {
         try {
-            const { user, pass } = req.body;
+            const { name, pass } = req.body;
 
-            if (!user || !pass) {
-                return res.render("register", { error: "Gebruikersnaam en wachtwoord zijn vereist!" });
+            if (!name || !pass) {
+                return res.render("register", { error: "Naam en wachtwoord zijn vereist!" });
             }
 
-            const existingUser = await usersCollection.findOne({ username: user });
+            const existingUser = await usersCollection.findOne({ name: name });
             if (existingUser) {
-                return res.render("register", { error: "Gebruikersnaam bestaat al!" });
+                return res.render("register", { error: "Naam bestaat al!" });
             }
 
-            const hashedPassword = await bcrypt.hash(pass, 10);
-            await usersCollection.insertOne({ username: user, password: hashedPassword, role: "USER" });
+            await usersCollection.insertOne({ name: name, password: pass, role: "USER" });
 
-            res.redirect("/login");
+            const authenticatedUser = await usersCollection.findOne({ name: name });
+
+            if (!authenticatedUser) {
+                return res.render("register", { error: "Er is een probleem opgetreden. Probeer opnieuw." });
+            }
+
+            currentUser = { username: authenticatedUser.name, role: authenticatedUser.role };
+            console.log(`Gebruiker ${name} geregistreerd en ingelogd!`);
+            res.redirect("/dashboard");
         } catch (error) {
             console.error("Registratiefout:", error);
             res.render("register", { error: "Er is een probleem opgetreden. Probeer opnieuw." });
         }
     });
 
-app.post("/login", async (req: Request, res: Response) => {
-    console.log("Volledige request body:", req.body);
-    const { user, pass } = req.body;
+    app.post("/login", async (req: Request, res: Response) => {
+        console.log("Volledige request body:", req.body);
+        const { user, pass } = req.body;
 
-    if (!user || !pass) {
-        console.error("Gebruikersnaam of wachtwoord ontbreekt!");
-        return res.render("login", { error: "Vul een geldige gebruikersnaam en wachtwoord in!" });
-    }
-
-    const allUsers = await usersCollection.find({}).toArray();
-    console.log("Alle gebruikers:", allUsers);
-
-    const authenticatedUser = allUsers.find(u => u.name === user);
-
-    if (!authenticatedUser || authenticatedUser.password !== pass) {
-        console.error("Ongeldige combinatie van gebruikersnaam en wachtwoord!");
-        return res.render("login", { error: "Ongeldige gebruikersnaam of wachtwoord." });
-    }
-
-    currentUser = { username: authenticatedUser.name, role: authenticatedUser.role };
-    res.redirect("/dashboard");
-});
-
-    // ** Dashboard Route **
-    app.get("/dashboard", (req: Request, res: Response) => {
-        if (!currentUser) {
-            return res.redirect("/login");
+        if (!user || !pass) {
+            console.error("Gebruikersnaam of wachtwoord ontbreekt!");
+            return res.render("login", { error: "Vul een geldige gebruikersnaam en wachtwoord in!" });
         }
 
-        res.render("dashboard", { user: currentUser });
+        const allUsers = await usersCollection.find({}).toArray();
+        console.log("Alle gebruikers:", allUsers);
+
+        const authenticatedUser = allUsers.find(u => u.name === user);
+
+        if (!authenticatedUser || authenticatedUser.password !== pass) {
+            console.error("Ongeldige combinatie van gebruikersnaam en wachtwoord!");
+            return res.render("login", { error: "Ongeldige gebruikersnaam of wachtwoord." });
+        }
+
+        currentUser = { username: authenticatedUser.name, role: authenticatedUser.role };
+        res.redirect("/dashboard");
     });
-}
+
+        // ** Dashboard Route **
+        app.get("/dashboard", (req: Request, res: Response) => {
+            if (!currentUser) {
+                return res.redirect("/login");
+            }
+
+            res.render("dashboard", { user: currentUser });
+        });
+    }
 
 startServer();
 
