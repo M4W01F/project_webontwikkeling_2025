@@ -67,6 +67,19 @@ async function startServer() {
 
     let currentUser: { username: string; role: string } | null = null;
 
+    app.get("/logout", (req: Request, res: Response) => {
+    currentUser = null;
+    res.redirect("/login");
+    });
+
+    app.get("/edit", (req: Request, res: Response) => {
+    if (!currentUser || currentUser.role !== "ADMIN") {
+        return res.render("index", { error: "Nog te implementeren" });
+    }
+
+    res.render("edit");
+    });
+
     // ** Register Route **
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
