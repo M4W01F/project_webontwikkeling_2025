@@ -1,9 +1,26 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import path from "path";
+import bcrypt from "bcrypt";
 import teamsPlayers from "./teams&players.json";
 import playerStats from "./playerStats.json";
+import { MongoClient } from "mongodb";
 const session = require("express-session");
+import mongoose from "mongoose";
+
+const uri = "mongodb+srv://dylandebrouwer:m4SQy74JJzZ57qH3@m4w01f.hpslzru.mongodb.net/?retryWrites=true&w=majority&appName=M4W01F";
+const client = new MongoClient(uri);
+const dbName = "M4W01F";
+
+async function connectDB() {
+    try {
+        await client.connect();
+        console.log("Connected to MongoDB!");
+        return client.db(dbName);
+    } catch (error) {
+        console.error("MongoDB connection failed:", error);
+    }
+}
 
 const app = express();
 const PORT = 3000;
@@ -25,8 +42,95 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Route: Homepage
-app.get("/", (req, res) => {
+// **Database Connection Setup**
+async function startServer() {
+    const db = await connectDB();
+    const usersCollection = db?.collection("users");
+
+    if (!usersCollection) {
+        console.error("Database connection is missing!");
+        return;
+    }
+
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+    });
+
+    // ** Authentication Routes **
+    app.get("/login", (req: Request, res: Response) => {
+        res.render("login", { error: "" });
+    });
+
+    app.get("/register", (req: Request, res: Response) => {
+        res.render("register", { error: "" });
+    });
+
+    let currentUser: { username: string; role: string } | null = null;
+
+    // ** Register Route **
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
+    app.post("/register", async (req: Request, res: Response) => {
+        try {
+            const { user, pass } = req.body;
+
+            if (!user || !pass) {
+                return res.render("register", { error: "Gebruikersnaam en wachtwoord zijn vereist!" });
+            }
+
+            const existingUser = await usersCollection.findOne({ username: user });
+            if (existingUser) {
+                return res.render("register", { error: "Gebruikersnaam bestaat al!" });
+            }
+
+            const hashedPassword = await bcrypt.hash(pass, 10);
+            await usersCollection.insertOne({ username: user, password: hashedPassword, role: "USER" });
+
+            res.redirect("/login");
+        } catch (error) {
+            console.error("Registratiefout:", error);
+            res.render("register", { error: "Er is een probleem opgetreden. Probeer opnieuw." });
+        }
+    });
+
+app.post("/login", async (req: Request, res: Response) => {
+    console.log("Volledige request body:", req.body);
+    const { user, pass } = req.body;
+
+    if (!user || !pass) {
+        console.error("Gebruikersnaam of wachtwoord ontbreekt!");
+        return res.render("login", { error: "Vul een geldige gebruikersnaam en wachtwoord in!" });
+    }
+
+    const allUsers = await usersCollection.find({}).toArray();
+    console.log("Alle gebruikers:", allUsers);
+
+    const authenticatedUser = allUsers.find(u => u.name === user);
+
+    if (!authenticatedUser || authenticatedUser.password !== pass) {
+        console.error("Ongeldige combinatie van gebruikersnaam en wachtwoord!");
+        return res.render("login", { error: "Ongeldige gebruikersnaam of wachtwoord." });
+    }
+
+    currentUser = { username: authenticatedUser.name, role: authenticatedUser.role };
+    res.redirect("/dashboard");
+});
+
+    // ** Dashboard Route **
+    app.get("/dashboard", (req: Request, res: Response) => {
+        if (!currentUser) {
+            return res.redirect("/login");
+        }
+
+        res.render("dashboard", { user: currentUser });
+    });
+}
+
+startServer();
+
+// ** Other Routes (Homepage, Team Details, Player Details) **
+app.get("/", (req: Request, res: Response) => {
     const { filter, sort } = req.query;
     let teams = teamsPlayers;
 
@@ -47,8 +151,7 @@ app.get("/", (req, res) => {
     res.render("index", { teams });
 });
 
-// Route: Team details
-app.get("/teams/:id", (req, res) => {
+app.get("/teams/:id", (req: Request, res: Response) => {
     const teamId = parseInt(req.params.id, 10);
     const team = teamsPlayers.find(t => t.id === teamId);
 
@@ -60,8 +163,7 @@ app.get("/teams/:id", (req, res) => {
     res.render("detail", { team });
 });
 
-// Route: Player details
-app.get("/players/:id", (req, res) => {
+app.get("/players/:id", (req: Request, res: Response) => {
     const statsId = parseInt(req.params.id, 10);
     const playerStatsEntry = playerStats.find(stat => stat.id === statsId);
 
@@ -96,49 +198,3 @@ app.get("/players/:id", (req, res) => {
         previousTeam,
     });
 });
-
-// **Start de server**
-app.listen(PORT, () => {
-    console.log(`Server draait op http://localhost:${PORT}`);
-});
-app.get("/login", (req, res) => {
-    res.render("login"); 
-});
-app.get("/register", (req, res) => {
-    res.render("register"); 
-});
-/* Fix een ander moment
-import { Request, Response } from "express";
-
-app.post("/login", async (req: Request, res: Response) => {
-    try {
-        const { username, password } = req.body;
-
-        const authenticatedUser = users.find(u => u.username === username && u.password === password);
-
-        if (!authenticatedUser) {
-            return res.status(401).json({ error: "Ongeldige gebruikersnaam of wachtwoord." });
-        }
-
-        req.session.user = authenticatedUser;
-        res.redirect("/dashboard");
-    } catch (error) {
-        res.status(500).json({ error: (error instanceof Error) ? error.message : "Er is een onbekende fout opgetreden." });
-    }
-});
-app.post("/register", async (req: Request, res: Response) => {
-    try {
-        const { username, password } = req.body;
-
-        const existingUser = users.find(u => u.username === username);
-        if (existingUser) {
-            return res.status(400).json({ error: "Gebruikersnaam bestaat al!" });
-        }
-        const hashedPassword = await bcrypt.hash(password, 10);
-        users.push({ username, password: hashedPassword, role: "USER" });
-
-        res.redirect("/login");
-    } catch (error) {
-        res.status(500).json({ error: (error instanceof Error) ? error.message : "Er is een onbekende fout opgetreden." });
-    }
-});*/

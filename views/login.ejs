@@ -5,12 +5,14 @@
 </head>
 <body>
     <h2>Inloggen</h2>
-    <% if (error) { %>
-        <p style="color: red;"><%= error %></p>
-    <% } %>
-    <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="Gebruikersnaam" required>
-        <input type="password" name="password" placeholder="Wachtwoord" required>
+<% if (typeof error !== 'undefined' && error) { %>
+    <p style="color: red;"><%= error %></p>
+    <p id="errorMessage" style="color: red;"></p>
+<% } %>
+
+    <form id="loginForm" action="/login" method="POST">
+        <input type="text" name="user" placeholder="Gebruikersnaam" required>
+        <input type="password" name="pass" placeholder="Wachtwoord" required>
         <button type="submit">Inloggen</button>
     </form>
     <p>Heb je nog geen account? <a href="/register">Registreer hier</a></p>

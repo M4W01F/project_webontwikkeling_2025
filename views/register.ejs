@@ -5,9 +5,13 @@
 </head>
 <body>
     <h2>Registreren</h2>
-    <form action="/register" method="POST">
-        <input type="text" name="username" placeholder="Gebruikersnaam" required>
-        <input type="password" name="password" placeholder="Wachtwoord" required>
+    <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+    <p id="errorMessage" style="color: red;"></p>
+<% } %>
+    <form id="registerForm" action="/register" method="POST">
+        <input type="text" name="user" placeholder="Gebruikersnaam" required>
+        <input type="password" name="pass" placeholder="Wachtwoord" required>
         <button type="submit">Registreren</button>
     </form>
     <p>Heb je al een account? <a href="/login">Log hier in</a></p>

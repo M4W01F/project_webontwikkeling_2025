@@ -5,13 +5,17 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h2>Welkom, <%= user.username %></h2>
-    <p>Je bent ingelogd als <strong><%= user.role %></strong></p>
+    <% if (typeof user !== 'undefined' && user) { %> 
+        <h2>Welkom, <%= user.username %></h2>
+        <p>Je bent ingelogd als <strong><%= user.role %></strong></p>
 
-    <% if (user.role === 'ADMIN') { %>
-        <button onclick="window.location.href='/edit'">Admin Bewerken</button>
+        <% if (user.role === 'ADMIN') { %>
+            <button onclick="window.location.href='/edit'">Admin Bewerken</button>
+        <% } %>
+
+        <button onclick="window.location.href='/logout'">Uitloggen</button>
+    <% } else { %>
+        <p>Je bent niet ingelogd. <a href="/login">Log hier in</a></p>
     <% } %>
-
-    <button onclick="window.location.href='/logout'">Uitloggen</button>
 </body>
 </html>
