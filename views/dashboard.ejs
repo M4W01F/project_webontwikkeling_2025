@@ -6,6 +6,7 @@
 </head>
 <body>
     <% if (typeof user !== 'undefined' && user) { %> 
+        <a href="/">Home</a>
         <h2>Welkom, <%= user.username %></h2>
         <p>Je bent ingelogd als <strong><%= user.role %></strong></p>
 
